@@ -32,4 +32,16 @@ class ConnectionService {
   Future<List<String>> getConnectedDevices() async {
     return await adbService.getConnectedDevices();
   }
+
+  Future<void> pairWithCode(String code) async {
+    // Implement pairing logic
+  }
+
+  void logInfo(String message) {
+    logger.logInfo(message);
+  }
+
+  void logError(String message) {
+    logger.logError(message);
+  }
 }

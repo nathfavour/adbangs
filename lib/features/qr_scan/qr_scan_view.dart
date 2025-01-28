@@ -23,7 +23,7 @@ class _QRScanViewState extends State<QRScanView> {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: controller.startScan,
+          onPressed: () => controller.startScan(context),
           child: Text('Start QR Scan'),
         ),
       ),

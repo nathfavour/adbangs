@@ -1,11 +1,13 @@
 import 'dart:async';
 import '../adb/adb_service.dart';
+import '../../services/connection_service.dart';
 
 class ConnectionManager {
   final ADBService adbService;
+  final ConnectionService connectionService;
   Timer? _autoConnectTimer;
 
-  ConnectionManager(this.adbService);
+  ConnectionManager(this.adbService, this.connectionService);
 
   void startAutoConnect() {
     _autoConnectTimer = Timer.periodic(Duration(seconds: 30), (_) async {

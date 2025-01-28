@@ -1,7 +1,12 @@
 import 'dart:async';
 import 'dart:io';
+import '../../services/connection_service.dart';
 
 class ADBService {
+  final ConnectionService connectionService;
+
+  ADBService(this.connectionService);
+
   Future<List<String>> getConnectedDevices() async {
     final result = await Process.run('adb', ['devices']);
     if (result.exitCode == 0) {
