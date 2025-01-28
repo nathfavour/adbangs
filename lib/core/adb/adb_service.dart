@@ -25,4 +25,17 @@ class ADBService {
   Future<void> pairWithCode(String code) async {
     await Process.run('adb', ['pair', code]);
   }
+
+  Future<bool> connect(String ip) async {
+    // Implement connection logic here
+    // Example:
+    // return await someADBConnectFunction(ip);
+    return true; // Placeholder
+  }
+
+  Future<void> disconnect(String ip) async {
+    // Implement disconnection logic here
+    // Example:
+    // await someADBDisconnectFunction(ip);
+  }
 }
