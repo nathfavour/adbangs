@@ -3,6 +3,7 @@ import 'routes.dart';
 import 'core/adb/adb_service.dart';
 import 'core/connectivity/connection_manager.dart';
 import 'core/utils/logger.dart';
+import 'features/auto_connect/auto_connect_controller.dart';
 
 class MyApp extends StatelessWidget {
   final ADBService adbService = ADBService();
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ConnectionManager connectionManager = ConnectionManager(adbService);
-    connectionManager.startAutoConnect();
+    final AutoConnectController autoConnectController = AutoConnectController();
+    autoConnectController.startAutoConnect();
 
     return MaterialApp(
       title: 'ADBangs',
