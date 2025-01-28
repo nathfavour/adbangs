@@ -1,4 +1,4 @@
-import '../../services/connection_service.dart';
+import 'core/connectivity/connection_service.dart';
 
 class PairingController {
   final ConnectionService connectionService;

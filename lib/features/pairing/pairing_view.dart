@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'pairing_controller.dart';
+import 'core/connectivity/connection_manager.dart'; // Import ConnectionManager
 
 class PairingView extends StatefulWidget {
+  final ConnectionManager connectionManager;
+
+  PairingView({required this.connectionManager});
+
   @override
   _PairingViewState createState() => _PairingViewState();
 }
 
 class _PairingViewState extends State<PairingView> {
-  final PairingController controller = PairingController();
+  late final PairingController controller;
   final TextEditingController codeController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PairingController(widget.connectionManager.connectionService);
+  }
 
   void _pairDevice() {
     controller.pairWithCode(codeController.text);
