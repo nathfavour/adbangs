@@ -6,13 +6,16 @@ import '../core/connectivity/connection_manager.dart';
 import '../core/utils/logger.dart';
 
 class HomeScreen extends StatefulWidget {
+  final ConnectionManager connectionManager;
+
+  HomeScreen({required this.connectionManager});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final ADBService adbService = ADBService();
-  final ConnectionManager connectionManager = ConnectionManager(ADBService());
   final AppLogger logger = AppLogger();
   List<String> devices = [];
   bool isLoading = false;
@@ -21,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     fetchDevices();
-    connectionManager.startAutoConnect();
+    widget.connectionManager.startAutoConnect();
   }
 
   Future<void> fetchDevices() async {
@@ -130,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
-    connectionManager.stopAutoConnect();
+    widget.connectionManager.stopAutoConnect();
     super.dispose();
   }
 }

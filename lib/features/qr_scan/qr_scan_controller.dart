@@ -7,9 +7,11 @@ import '../../core/utils/qr_scanner.dart';
 import '../../features/pairing/pairing_controller.dart';
 
 class QRScanController {
-  final ConnectionService connectionService =
-      ConnectionService(ADBService(), AppLogger());
-  final PairingController pairingController = PairingController();
+  final ConnectionService connectionService;
+  final PairingController pairingController;
+
+  QRScanController(this.connectionService)
+      : pairingController = PairingController(connectionService);
 
   void startScan(BuildContext context) {
     showDialog(

@@ -11,11 +11,11 @@ class ConnectionService {
     try {
       bool result = await adbService.connect(ip);
       if (result) {
-        logger.log('Connected to $ip');
+        logger.logInfo('Connected to $ip');
       }
       return result;
     } catch (e) {
-      logger.error('Connection failed: $e');
+      logger.logError('Connection failed: $e');
       return false;
     }
   }
@@ -23,9 +23,9 @@ class ConnectionService {
   Future<void> disconnectDevice(String ip) async {
     try {
       await adbService.disconnect(ip);
-      logger.log('Disconnected from $ip');
+      logger.logInfo('Disconnected from $ip');
     } catch (e) {
-      logger.error('Disconnection failed: $e');
+      logger.logError('Disconnection failed: $e');
     }
   }
 
@@ -34,7 +34,12 @@ class ConnectionService {
   }
 
   Future<void> pairWithCode(String code) async {
-    // Implement pairing logic
+    try {
+      await adbService.pairWithCode(code);
+      logger.logInfo('Paired with code: $code');
+    } catch (e) {
+      logger.logError('Pairing failed: $e');
+    }
   }
 
   void logInfo(String message) {
@@ -42,6 +47,11 @@ class ConnectionService {
   }
 
   void logError(String message) {
+  void logError(String message) {
+    logger.logError(message);
+  }
+}
+
     logger.logError(message);
   }
 }

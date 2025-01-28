@@ -3,8 +3,10 @@ import '../../core/adb/adb_service.dart';
 import '../../core/utils/logger.dart';
 
 class AutoConnectController {
-  final ConnectionService connectionService =
-      ConnectionService(ADBService(), AppLogger());
+  final ConnectionService connectionService;
+
+  AutoConnectController(AppLogger logger)
+      : connectionService = ConnectionService(ADBService(logger), logger);
 
   void startAutoConnect() {
     // Implement logic to auto connect to known devices on startup

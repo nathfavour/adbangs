@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:io';
-import '../../services/connection_service.dart';
+import '../../core/utils/logger.dart';
 
 class ADBService {
-  final ConnectionService connectionService;
+  final AppLogger logger;
 
-  ADBService(this.connectionService);
+  ADBService(this.logger);
 
   Future<List<String>> getConnectedDevices() async {
     final result = await Process.run('adb', ['devices']);
@@ -16,6 +16,7 @@ class ADBService {
           .map((line) => line.split('\t').first)
           .toList();
     }
+    logger.logError('Failed to get connected devices: ${result.stderr}');
     return [];
   }
 
@@ -36,15 +37,14 @@ class ADBService {
     if (result.exitCode == 0) {
       return true;
     }
-    connectionService.logError('Failed to connect to $ip: ${result.stderr}');
+    logger.logError('Failed to connect to $ip: ${result.stderr}');
     return false;
   }
 
   Future<void> disconnect(String ip) async {
     final result = await Process.run('adb', ['disconnect', ip]);
     if (result.exitCode != 0) {
-      connectionService
-          .logError('Failed to disconnect from $ip: ${result.stderr}');
+      logger.logError('Failed to disconnect from $ip: ${result.stderr}');
     }
   }
 }

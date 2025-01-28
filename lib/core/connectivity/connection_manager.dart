@@ -33,6 +33,6 @@ class ConnectionManager {
   }
 
   Future<void> pairWithCode(String code) async {
-    await adbService.pairWithCode(code);
+    await connectionService.pairWithCode(code);
   }
 }

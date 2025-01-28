@@ -5,14 +5,26 @@ import 'core/connectivity/connection_manager.dart';
 import 'core/utils/logger.dart';
 import 'features/auto_connect/auto_connect_controller.dart';
 import 'theme/app_theme.dart';
+import 'services/connection_service.dart';
+
+void main() {
+  final AppLogger logger = AppLogger();
+  final ADBService adbService = ADBService(logger);
+  final ConnectionService connectionService =
+      ConnectionService(adbService, logger);
+  final ConnectionManager connectionManager =
+      ConnectionManager(adbService, connectionService);
+
+  runApp(MyApp(connectionManager: connectionManager));
+}
 
 class MyApp extends StatelessWidget {
-  final ADBService adbService = ADBService();
-  final AppLogger logger = AppLogger();
+  final ConnectionManager connectionManager;
+
+  MyApp({required this.connectionManager});
 
   @override
   Widget build(BuildContext context) {
-    final ConnectionManager connectionManager = ConnectionManager(adbService);
     final AutoConnectController autoConnectController = AutoConnectController();
     autoConnectController.startAutoConnect();
 

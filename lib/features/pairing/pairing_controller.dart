@@ -3,10 +3,11 @@ import '../../core/adb/adb_service.dart';
 import '../../core/utils/logger.dart';
 
 class PairingController {
-  final ConnectionService connectionService =
-      ConnectionService(ADBService(), AppLogger());
+  final ConnectionService connectionService;
 
-  void pairWithCode(String code) async {
+  PairingController(this.connectionService);
+
+  Future<void> pairWithCode(String code) async {
     try {
       await connectionService.pairWithCode(code);
       connectionService.logInfo('Pairing successful with code: $code');
