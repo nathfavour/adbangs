@@ -1,9 +1,9 @@
-import 'package:adbangs/core/utils/logger.dart'; // Import Logger
+import 'package:adbangs/core/utils/logger.dart'; // Import AppLogger
 import 'package:adbangs/services/adb_service.dart'; // Ensure correct ADBService import
 
 class ConnectionService {
   final ADBService adbService;
-  final Logger logger;
+  final AppLogger logger; // Use AppLogger
 
   ConnectionService(this.adbService, this.logger);
 

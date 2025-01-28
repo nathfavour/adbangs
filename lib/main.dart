@@ -3,11 +3,11 @@ import 'app.dart';
 import 'core/connectivity/connection_manager.dart';
 import 'services/adb_service.dart'; // Import ADBService
 import 'services/connection_service.dart'; // Import ConnectionService
-import 'core/utils/logger.dart'; // Import Logger
+import 'core/utils/logger.dart'; // Import AppLogger
 
 void main() {
   final adbService = ADBService(); // Instantiate ADBService
-  final logger = Logger(); // Instantiate Logger
+  final logger = AppLogger(); // Instantiate AppLogger
   final connectionService =
       ConnectionService(adbService, logger); // Pass adbService and logger
   final connectionManager = ConnectionManager(adbService,
