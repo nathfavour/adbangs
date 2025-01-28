@@ -1,3 +1,5 @@
+import 'package:adbangs/services/connection_service.dart';
+
 import 'core/connectivity/connection_service.dart';
 
 class PairingController {
