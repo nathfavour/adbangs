@@ -1,5 +1,15 @@
 import 'package:logger/logger.dart';
 
+class Logger {
+  void logInfo(String message) {
+    print('INFO: $message');
+  }
+
+  void logError(String message) {
+    print('ERROR: $message');
+  }
+}
+
 class AppLogger {
   final Logger logger = Logger();
 

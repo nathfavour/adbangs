@@ -1,4 +1,4 @@
-import '../../services/connection_service.dart';
+import 'package:adbangs/services/connection_service.dart';
 
 class AutoConnectController {
   final ConnectionService connectionService;

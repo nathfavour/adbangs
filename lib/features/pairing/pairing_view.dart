@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pairing_controller.dart';
-import 'core/connectivity/connection_manager.dart'; // Import ConnectionManager
+import 'package:adbangs/services/connection_manager.dart'; // Ensure correct import
 
 class PairingView extends StatefulWidget {
   final ConnectionManager connectionManager;

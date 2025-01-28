@@ -42,4 +42,20 @@ class ADBService {
     // Assuming qrData contains the device IP or identifier
     await connect(qrData);
   }
+
+  Future<void> disconnect(String device) async {
+    try {
+      await _shell.run('adb disconnect $device');
+    } catch (e) {
+      // Handle errors appropriately
+    }
+  }
+
+  Future<void> pairWithCode(String code) async {
+    try {
+      await _shell.run('adb pair $code');
+    } catch (e) {
+      // Handle errors appropriately
+    }
+  }
 }

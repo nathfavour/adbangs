@@ -1,5 +1,5 @@
-import '../core/adb/adb_service.dart';
-import '../core/utils/logger.dart';
+import 'package:adbangs/core/utils/logger.dart'; // Import Logger
+import 'package:adbangs/services/adb_service.dart'; // Ensure correct ADBService import
 
 class ConnectionService {
   final ADBService adbService;
