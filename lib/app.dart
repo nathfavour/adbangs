@@ -15,12 +15,14 @@ class MyApp extends StatelessWidget {
         AutoConnectController(connectionManager.connectionService);
     autoConnectController.startAutoConnect();
 
+    final appRoutes = AppRoutes(
+        connectionManager); // Initialize AppRoutes with connectionManager
+
     return MaterialApp(
       title: 'ADBangs',
       theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.home,
-      onGenerateRoute: (settings) =>
-          AppRoutes.generateRoute(settings, connectionManager),
+      onGenerateRoute: appRoutes.generateRoute, // Updated line
     );
   }
 }
