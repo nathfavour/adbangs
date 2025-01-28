@@ -1,10 +1,11 @@
+import 'package:adbangs/core/connectivity/connection_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/qr_generator.dart';
 import '../widgets/pairing_method_card.dart';
 
 class PairScreen extends StatefulWidget {
-  const PairScreen({super.key});
+  const PairScreen({super.key, required ConnectionManager connectionManager});
 
   @override
   _PairScreenState createState() => _PairScreenState();
