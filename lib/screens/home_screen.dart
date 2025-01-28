@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widgets/device_list.dart';
 import '../widgets/dashboard_card.dart';
-import '../core/adb/adb_service.dart';
-import '../core/connectivity/connection_manager.dart';
-import '../core/utils/logger.dart';
-import '../../services/connection_service.dart';
 import '../../core/utils/logger.dart';
+import '../../services/connection_service.dart';
+import '../../core/connectivity/connection_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   final ConnectionManager connectionManager;
@@ -17,13 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final AppLogger logger = AppLogger();
-  final ADBService adbService = ADBService(logger);
-  final ConnectionService connectionService;
-
-  _HomeScreenState()
-      : connectionService =
-            ConnectionService(ADBService(AppLogger()), AppLogger());
+  late ConnectionService connectionService;
 
   List<String> devices = [];
   bool isLoading = false;
@@ -31,13 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    connectionService = widget.connectionManager.connectionService;
     fetchDevices();
     widget.connectionManager.startAutoConnect();
   }
 
   Future<void> fetchDevices() async {
     setState(() => isLoading = true);
-    devices = await adbService.getConnectedDevices();
+    devices = await connectionService.adbService.getConnectedDevices();
     setState(() => isLoading = false);
   }
 

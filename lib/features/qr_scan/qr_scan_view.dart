@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
 import 'qr_scan_controller.dart';
+import '../../core/connectivity/connection_manager.dart';
 
 class QRScanView extends StatefulWidget {
+  final ConnectionManager connectionManager;
+
+  QRScanView({required this.connectionManager});
+
   @override
   _QRScanViewState createState() => _QRScanViewState();
 }
 
 class _QRScanViewState extends State<QRScanView> {
-  final QRScanController controller = QRScanController();
+  late QRScanController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = QRScanController(widget.connectionManager.connectionService);
+  }
 
   @override
   void dispose() {

@@ -1,6 +1,4 @@
 import '../../services/connection_service.dart';
-import '../../core/adb/adb_service.dart';
-import '../../core/utils/logger.dart';
 
 class PairingController {
   final ConnectionService connectionService;
