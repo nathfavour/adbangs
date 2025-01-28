@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Text(
                       'Connected Devices',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(height: 8),
                   ],
