@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'routes.dart';
 import 'core/connectivity/connection_manager.dart';
-import 'core/utils/logger.dart';
 import 'features/auto_connect/auto_connect_controller.dart';
 import 'theme/app_theme.dart';
-import 'services/connection_service.dart';
 
 class MyApp extends StatelessWidget {
   final ConnectionManager connectionManager;
@@ -13,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AutoConnectController autoConnectController =
-        AutoConnectController(connectionManager.connectionService.logger);
+    final autoConnectController =
+        AutoConnectController(connectionManager.connectionService);
     autoConnectController.startAutoConnect();
 
     return MaterialApp(
