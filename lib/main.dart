@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'app.dart';
-import 'core/connectivity/connection_manager.dart'; // Import ConnectionManager
+import 'core/connectivity/connection_manager.dart';
+import 'services/adb_service.dart'; // Import ADBService
+import 'services/connection_service.dart'; // Import ConnectionService
 
 void main() {
-  final connectionManager = ConnectionManager(); // Initialize ConnectionManager
+  final adbService = ADBService(); // Instantiate ADBService
+  final connectionService =
+      ConnectionService(); // Instantiate ConnectionService
+  final connectionManager = ConnectionManager(adbService,
+      connectionService); // Initialize ConnectionManager with services
   runApp(MyApp(connectionManager: connectionManager));
 }
