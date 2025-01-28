@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';
+import 'routes.dart';
+import 'core/adb/adb_service.dart';
+import 'core/connectivity/connection_manager.dart';
+import 'core/utils/logger.dart';
+
+class MyApp extends StatelessWidget {
+  final ADBService adbService = ADBService();
+  final AppLogger logger = AppLogger();
+
+  @override
+  Widget build(BuildContext context) {
+    final ConnectionManager connectionManager = ConnectionManager(adbService);
+    connectionManager.startAutoConnect();
+
+    return MaterialApp(
+      title: 'ADBangs',
+      initialRoute: AppRoutes.home,
+      onGenerateRoute: AppRoutes.generateRoute,
+    );
+  }
+}
