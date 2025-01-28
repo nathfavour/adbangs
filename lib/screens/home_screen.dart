@@ -8,7 +8,7 @@ import '../../core/connectivity/connection_manager.dart';
 class HomeScreen extends StatefulWidget {
   final ConnectionManager connectionManager;
 
-  HomeScreen({required this.connectionManager});
+  const HomeScreen({super.key, required this.connectionManager});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();

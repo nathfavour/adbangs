@@ -5,7 +5,7 @@ import 'core/connectivity/connection_manager.dart'; // Import ConnectionManager
 class PairingView extends StatefulWidget {
   final ConnectionManager connectionManager;
 
-  PairingView({required this.connectionManager});
+  const PairingView({super.key, required this.connectionManager});
 
   @override
   _PairingViewState createState() => _PairingViewState();

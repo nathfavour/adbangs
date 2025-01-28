@@ -7,7 +7,7 @@ import 'theme/app_theme.dart';
 class MyApp extends StatelessWidget {
   final ConnectionManager connectionManager;
 
-  MyApp({required this.connectionManager});
+  const MyApp({super.key, required this.connectionManager});
 
   @override
   Widget build(BuildContext context) {

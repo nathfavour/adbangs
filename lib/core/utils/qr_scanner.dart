@@ -6,7 +6,7 @@ typedef OnQrData = void Function(String data);
 class QRScanner extends StatefulWidget {
   final OnQrData onQrData;
 
-  QRScanner({required this.onQrData});
+  const QRScanner({super.key, required this.onQrData});
 
   @override
   _QRScannerState createState() => _QRScannerState();

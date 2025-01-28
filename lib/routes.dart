@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
 import 'screens/pair_screen.dart';
 import 'features/qr_scan/qr_scan_view.dart';
-import 'features/pairing/pairing_view.dart';
-import 'package:adbangs/screens/pair_screen.dart';
 import 'core/connectivity/connection_manager.dart'; // Import ConnectionManager
 
 class AppRoutes {

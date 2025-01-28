@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 import '../../services/connection_service.dart';
 import '../../core/utils/qr_scanner.dart';
 import '../../features/pairing/pairing_controller.dart';

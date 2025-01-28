@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DeviceList extends StatelessWidget {
   final List<String> devices;
 
-  DeviceList({required this.devices});
+  const DeviceList({super.key, required this.devices});
 
   @override
   Widget build(BuildContext context) {

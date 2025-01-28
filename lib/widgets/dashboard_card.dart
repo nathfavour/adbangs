@@ -7,6 +7,7 @@ class DashboardCard extends StatelessWidget {
   final Color? color;
 
   const DashboardCard({
+    super.key,
     required this.title,
     required this.icon,
     required this.onTap,

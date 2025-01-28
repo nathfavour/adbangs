@@ -7,6 +7,7 @@ class PairingMethodCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const PairingMethodCard({
+    super.key,
     required this.title,
     required this.description,
     required this.icon,

@@ -5,7 +5,7 @@ import '../../core/connectivity/connection_manager.dart';
 class QRScanView extends StatefulWidget {
   final ConnectionManager connectionManager;
 
-  QRScanView({required this.connectionManager});
+  const QRScanView({super.key, required this.connectionManager});
 
   @override
   _QRScanViewState createState() => _QRScanViewState();

@@ -1,6 +1,4 @@
 import '../../services/connection_service.dart';
-import '../../core/adb/adb_service.dart';
-import '../../core/utils/logger.dart';
 
 class AutoConnectController {
   final ConnectionService connectionService;

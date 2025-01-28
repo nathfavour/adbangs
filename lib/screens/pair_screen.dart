@@ -4,6 +4,8 @@ import '../utils/qr_generator.dart';
 import '../widgets/pairing_method_card.dart';
 
 class PairScreen extends StatefulWidget {
+  const PairScreen({super.key});
+
   @override
   _PairScreenState createState() => _PairScreenState();
 }
