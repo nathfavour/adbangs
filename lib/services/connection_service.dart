@@ -3,7 +3,7 @@ import '../core/utils/logger.dart';
 
 class ConnectionService {
   final ADBService adbService;
-  final AppLogger logger;
+  final Logger logger;
 
   ConnectionService(this.adbService, this.logger);
 

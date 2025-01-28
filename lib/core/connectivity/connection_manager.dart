@@ -1,5 +1,5 @@
 import 'dart:async';
-import '../adb/adb_service.dart';
+import 'package:adbangs/services/adb_service.dart';
 import '../../services/connection_service.dart';
 
 class ConnectionManager {

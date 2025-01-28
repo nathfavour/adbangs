@@ -6,8 +6,8 @@ import 'services/connection_service.dart'; // Import ConnectionService
 
 void main() {
   final adbService = ADBService(); // Instantiate ADBService
-  final connectionService =
-      ConnectionService(); // Instantiate ConnectionService
+  final connectionService = ConnectionService(adbService,
+      logger); // Instantiate ConnectionService with required arguments
   final connectionManager = ConnectionManager(adbService,
       connectionService); // Initialize ConnectionManager with services
   runApp(MyApp(connectionManager: connectionManager));
