@@ -6,8 +6,14 @@ class PairingController {
   final ConnectionService connectionService =
       ConnectionService(ADBService(), AppLogger());
 
-  void pairWithCode(String code) {
-    // Implement pairing logic using the provided code
-    // For example, connect to device using code as IP or authentication token
+  void pairWithCode(String code) async {
+    try {
+      await connectionService.pairWithCode(code);
+      connectionService.logInfo('Pairing successful with code: $code');
+      // Optionally, notify the UI about successful pairing
+    } catch (e) {
+      connectionService.logError('Pairing failed: $e');
+      // Optionally, notify the UI about the error
+    }
   }
 }

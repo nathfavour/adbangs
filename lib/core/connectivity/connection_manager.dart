@@ -10,7 +10,14 @@ class ConnectionManager {
   void startAutoConnect() {
     _autoConnectTimer = Timer.periodic(Duration(seconds: 30), (_) async {
       final devices = await adbService.getConnectedDevices();
-      // Implement logic to maintain connections
+      for (var device in devices) {
+        final success = await adbService.connect(device);
+        if (success) {
+          connectionService.logInfo('Auto-connected to device: $device');
+        } else {
+          connectionService.logError('Auto-connect failed for device: $device');
+        }
+      }
     });
   }
 

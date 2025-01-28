@@ -27,15 +27,19 @@ class ADBService {
   }
 
   Future<bool> connect(String ip) async {
-    // Implement connection logic here
-    // Example:
-    // return await someADBConnectFunction(ip);
-    return true; // Placeholder
+    final result = await Process.run('adb', ['connect', ip]);
+    if (result.exitCode == 0) {
+      return true;
+    }
+    connectionService.logError('Failed to connect to $ip: ${result.stderr}');
+    return false;
   }
 
   Future<void> disconnect(String ip) async {
-    // Implement disconnection logic here
-    // Example:
-    // await someADBDisconnectFunction(ip);
+    final result = await Process.run('adb', ['disconnect', ip]);
+    if (result.exitCode != 0) {
+      connectionService
+          .logError('Failed to disconnect from $ip: ${result.stderr}');
+    }
   }
 }
