@@ -9,7 +9,7 @@ class PairScreen extends StatefulWidget {
 }
 
 class _PairScreenState extends State<PairScreen> {
-  String? _pairingCode;
+  String _pairingCode = ''; // Change to non-nullable with empty default
   String _ipAddress = '192.168.1.100'; // Example IP
   String _port = '5555';
   bool _showQRCode = false;
@@ -26,13 +26,17 @@ class _PairScreenState extends State<PairScreen> {
   }
 
   Widget _buildQRCodeView() {
+    if (_pairingCode.isEmpty) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     return Container(
       padding: EdgeInsets.all(24),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           QRGenerator.generateQRCode(
-            QRGenerator.formatPairingCode(_pairingCode!, _ipAddress, _port),
+            QRGenerator.formatPairingCode(_pairingCode, _ipAddress, _port),
             200,
           ),
           SizedBox(height: 16),
