@@ -14,7 +14,8 @@ class AppRoutes {
       case home:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case pair:
-        return MaterialPageRoute(builder: (_) => PairScreen());
+        return MaterialPageRoute(
+            builder: (_) => PairScreen()); // Ensure PairScreen exists
       case qrScan:
         return MaterialPageRoute(builder: (_) => QRScanView()); // New route
       default:
