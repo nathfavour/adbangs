@@ -4,6 +4,8 @@ import '../widgets/dashboard_card.dart';
 import '../core/adb/adb_service.dart';
 import '../core/connectivity/connection_manager.dart';
 import '../core/utils/logger.dart';
+import '../../services/connection_service.dart';
+import '../../core/utils/logger.dart';
 
 class HomeScreen extends StatefulWidget {
   final ConnectionManager connectionManager;
@@ -15,8 +17,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ADBService adbService = ADBService();
   final AppLogger logger = AppLogger();
+  final ADBService adbService = ADBService(logger);
+  final ConnectionService connectionService;
+
+  _HomeScreenState()
+      : connectionService =
+            ConnectionService(ADBService(AppLogger()), AppLogger());
+
   List<String> devices = [];
   bool isLoading = false;
 

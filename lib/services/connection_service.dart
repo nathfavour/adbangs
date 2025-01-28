@@ -47,11 +47,6 @@ class ConnectionService {
   }
 
   void logError(String message) {
-  void logError(String message) {
-    logger.logError(message);
-  }
-}
-
     logger.logError(message);
   }
 }

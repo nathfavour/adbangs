@@ -25,14 +25,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AutoConnectController autoConnectController = AutoConnectController();
+    final AutoConnectController autoConnectController =
+        AutoConnectController(connectionManager.connectionService.logger);
     autoConnectController.startAutoConnect();
 
     return MaterialApp(
       title: 'ADBangs',
       theme: AppTheme.lightTheme,
       initialRoute: AppRoutes.home,
-      onGenerateRoute: AppRoutes.generateRoute,
+      onGenerateRoute: (settings) =>
+          AppRoutes.generateRoute(settings, connectionManager),
     );
   }
 }
